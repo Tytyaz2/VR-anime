@@ -1,0 +1,15 @@
+# Fichiers Unity à ignorer
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# Fichiers spécifiques à Visual Studio
+.vscode/
+*.csproj
+*.sln
+*.user
