@@ -1,17 +1,42 @@
 using UnityEngine;
 
-public class attack : MonoBehaviour
+public class HandProjectile : MonoBehaviour
 {
-    public GameObject Attaque; // l'attaque a instancier
-    public Transform firepoint; //spawn du projectile
-    public float bulletForce = 20f; // vitesse du projectile
+    public GameObject projectilePrefab; // Préfabriqué du projectile
+    public float projectileSpeed = 10f; // Vitesse du projectile
+    public float forwardThreshold = 0.5f; // Seuil de mouvement vers l'avant
 
-    public void shoot() {
-    GameObject projectile = Instantiate(Attaque, firepoint.position , firepoint.rotation);
-    Rigidbody rb = projectile.GetComponent<Rigidbody>();
-    if (rb != null)
+    private Vector3 previousPosition;
+
+    void Start()
     {
-        rb.AddForce(firepoint.forward * bulletForce,ForceMode.Impulse);
+        previousPosition = transform.position;
+    }
+
+    void Update()
+    {
+        Vector3 currentPosition = transform.position;
+        Vector3 movementDirection = currentPosition - previousPosition;
+
+        // Vérifier si la main se déplace vers l'avant
+        if (movementDirection.z > forwardThreshold)
+        {
+            LaunchProjectile();
+        }
+
+        previousPosition = currentPosition;
+    }
+
+    void LaunchProjectile()
+    {
+        // Instancier le projectile à la position de la main
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+        // Définir la vitesse du projectile
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = transform.forward * projectileSpeed;
         }
     }
 }
