@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class TargetSpawner : MonoBehaviour
 {
@@ -14,6 +14,11 @@ public class TargetSpawner : MonoBehaviour
 
     private GameObject currentTarget = null; // Stocke la cible actuelle
     private int score = 0; // Score du joueur
+
+    // Pour gerer la musique dans la peau
+    public AudioSource audioSource;  // Référence à l'AudioSource
+    public AudioClip scoreIncreaseSound; // Référence au clip audio du score
+
 
     void Start()
     {
@@ -73,14 +78,22 @@ public class TargetSpawner : MonoBehaviour
         targetScript.spawner = this; // Permet d’accéder au score
     }
 
-    public void TargetDestroyed()
+    public void TargetDestroyed(Vector3 targetPosition)
     {
         currentTarget = null; // Libère la place pour une nouvelle cible
+
+    // Joue le son de destruction à la position de la cible
+        if (scoreIncreaseSound != null)
+        {
+            AudioSource.PlayClipAtPoint(scoreIncreaseSound, targetPosition);
+        }
+
     }
 
     public void AddScore(int amount)
     {
         score += amount;
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + score;  // Met à jour l'affichage du score
     }
+
 }
