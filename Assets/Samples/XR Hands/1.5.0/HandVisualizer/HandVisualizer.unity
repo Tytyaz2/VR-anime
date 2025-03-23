@@ -513,32 +513,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f7511fbc40ae7a4b89c3298a3de199d, type: 3}
---- !u!1 &633718449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4985677829560647913, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
-  m_PrefabInstance: {fileID: 1048441849}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &633718450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6220702574933216500, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
   m_PrefabInstance: {fileID: 1048441849}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &633718452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633718449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4371de25a2c6e7041b1a0aec3f38993e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6067605377157023007, guid: f4afe382a36ffd84a912440c82ecb24b, type: 3}
-  spawnPoint: {fileID: 1475768125}
-  launchForce: 20
-  speedThreshold: 1.5
 --- !u!1 &935940900
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,10 +692,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6220702574933216500, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1475768125}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4985677829560647913, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 633718452}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
 --- !u!4 &1048441850 stripped
 Transform:
@@ -961,8 +937,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 4787548710507679163, guid: 98a0373c16280a24689a8f117621f178, type: 3}
   player: {fileID: 1085439597}
-  spawnRadius: 10
-  spawnInterval: 2
+  minDistance: 3
+  maxDistance: 5
+  minHeight: 1
+  maxHeight: 3
   scoreText: {fileID: 0}
 --- !u!4 &1651769790
 Transform:
