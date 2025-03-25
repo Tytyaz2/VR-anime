@@ -15,10 +15,9 @@ public class TargetSpawner : MonoBehaviour
     private GameObject currentTarget = null; // Stocke la cible actuelle
     private int score = 0; // Score du joueur
 
-    // Pour gerer la musique dans la peau
+    // Pour gérer la musique dans la peau
     public AudioSource audioSource;  // Référence à l'AudioSource
     public AudioClip scoreIncreaseSound; // Référence au clip audio du score
-
 
     void Start()
     {
@@ -75,25 +74,23 @@ public class TargetSpawner : MonoBehaviour
 
         // Ajouter le script de destruction au clic
         Target targetScript = currentTarget.AddComponent<Target>();
-        targetScript.spawner = this; // Permet d’accéder au score
+        targetScript.spawner = this; // Assure l'affectation de spawner
+        Debug.Log("Spawner assigned: " + targetScript.spawner);  // Debug log pour vérifier
     }
 
     public void TargetDestroyed(Vector3 targetPosition)
     {
         currentTarget = null; // Libère la place pour une nouvelle cible
 
-    // Joue le son de destruction à la position de la cible
-        if (scoreIncreaseSound != null)
-        {
-            AudioSource.PlayClipAtPoint(scoreIncreaseSound, targetPosition);
-        }
-
+        // Joue le son de destruction à la position de la cible
     }
 
     public void AddScore(int amount)
     {
+
+                audioSource.PlayOneShot(scoreIncreaseSound);
+
         score += amount;
         scoreText.text = "Score: " + score;  // Met à jour l'affichage du score
     }
-
 }

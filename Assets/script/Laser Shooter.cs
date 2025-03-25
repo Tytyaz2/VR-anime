@@ -5,81 +5,23 @@ using System.Collections;
 
 public class LaserShooter : MonoBehaviour
 {
-    public GameObject laserPrefab;
+    public GameObject laserPrefab;  // Ton prefab de laser, doit contenir un LineRenderer
     public float laserDistanceFromHand = 0.5f;  // Distance à laquelle le laser doit commencer devant la main
     private XRHandSubsystem handSubsystem;
     public float laserRange = 10f;
     private bool canFireLaser = true;  // Permet de vérifier si le cooldown est terminé
-    public float laserCooldown = 5f;  // Cooldown entre chaque utilisation du laser
 
-    void Start()
+    private void Start()
     {
-        var loader = XRGeneralSettings.Instance?.Manager?.activeLoader;
-        if (loader != null)
-        {
-            handSubsystem = loader.GetLoadedSubsystem<XRHandSubsystem>();
-
-            if (handSubsystem != null)
-            {
-                handSubsystem.updatedHands += OnHandUpdated;
-            }
-        }
+        handSubsystem = XRGeneralSettings.Instance?.Manager?.activeLoader?.GetLoadedSubsystem<XRHandSubsystem>();
     }
 
-    private void OnDestroy()
+    public void ShootProjectile(string handType)
     {
-        if (handSubsystem != null)
-        {
-            handSubsystem.updatedHands -= OnHandUpdated;
-        }
-    }
+        if (laserPrefab == null || handSubsystem == null || !canFireLaser) return;
 
-    private void OnHandUpdated(XRHandSubsystem subsystem, XRHandSubsystem.UpdateSuccessFlags successFlags, XRHandSubsystem.UpdateType updateType)
-    {
-        if (subsystem.rightHand.isTracked)
-        {
-            HandleLaserAction(subsystem.rightHand);
-        }
-        if (subsystem.leftHand.isTracked)
-        {
-            HandleLaserAction(subsystem.leftHand);
-        }
-    }
-
-    private void HandleLaserAction(XRHand hand)
-    {
-        if (IsLaserGesture(hand) && canFireLaser)
-        {
-            StartCoroutine(FireLaser(hand));
-        }
-    }
-
-    private bool IsLaserGesture(XRHand hand, float sensitivityThreshold = 0.12f)
-    {
-        if (hand == null) return false;
-
-        bool indexOpen = IsFingerExtended(hand, XRHandJointID.IndexTip, XRHandJointID.IndexMetacarpal, sensitivityThreshold);
-        bool middleOpen = IsFingerExtended(hand, XRHandJointID.MiddleTip, XRHandJointID.MiddleMetacarpal, sensitivityThreshold);
-        bool ringClosed = !IsFingerExtended(hand, XRHandJointID.RingTip, XRHandJointID.RingMetacarpal, sensitivityThreshold * 0.8f);
-        bool pinkyClosed = !IsFingerExtended(hand, XRHandJointID.LittleTip, XRHandJointID.LittleMetacarpal, sensitivityThreshold * 0.8f);
-        bool thumbClosed = !IsFingerExtended(hand, XRHandJointID.ThumbTip, XRHandJointID.ThumbMetacarpal, sensitivityThreshold * 0.7f);
-
-        return indexOpen && middleOpen && ringClosed && pinkyClosed && thumbClosed;
-    }
-
-    private bool IsFingerExtended(XRHand hand, XRHandJointID tip, XRHandJointID baseJoint, float threshold = 0.12f)
-    {
-        if (hand.GetJoint(tip).TryGetPose(out Pose tipPose) &&
-            hand.GetJoint(baseJoint).TryGetPose(out Pose basePose))
-        {
-            return Vector3.Distance(tipPose.position, basePose.position) > threshold;
-        }
-        return false;
-    }
-
-    private IEnumerator FireLaser(XRHand hand)
-    {
-        if (laserPrefab == null) yield break;
+        XRHand hand = handType == "right" ? handSubsystem.rightHand : handSubsystem.leftHand;
+        if (hand == null || !hand.isTracked) return;
 
         // Désactive la possibilité de tirer jusqu'à la fin du cooldown
         canFireLaser = false;
@@ -87,32 +29,58 @@ public class LaserShooter : MonoBehaviour
         if (hand.GetJoint(XRHandJointID.Palm).TryGetPose(out Pose palmPose))
         {
             // Crée le laser à la position de la main mais décalé dans la direction de la main
-            Vector3 laserPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;  // Position décalée devant la main
-            GameObject laser = Instantiate(laserPrefab, laserPosition, palmPose.rotation);
+            Vector3 laserPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;
+            GameObject laserInstance = Instantiate(laserPrefab, laserPosition, palmPose.rotation);
+            LineRenderer lineRenderer = laserInstance.GetComponent<LineRenderer>();
+
+            if (lineRenderer == null)
+            {
+                // Si le prefab n'a pas de LineRenderer, on peut l'ajouter dynamiquement
+                lineRenderer = laserInstance.AddComponent<LineRenderer>();
+            }
+
+            lineRenderer.positionCount = 2;  // Le laser aura deux points: départ et fin
+            lineRenderer.startWidth = 0.1f; // Largeur du laser
+            lineRenderer.endWidth = 0.1f;
+
+            // Définir la position du départ du laser juste devant la main
+            Vector3 laserStartPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;
 
             // Utiliser un Raycast pour vérifier la collision du laser avec la cible
             RaycastHit hit;
-            if (Physics.Raycast(laserPosition, palmPose.forward, out hit, laserRange))
+            if (Physics.Raycast(laserStartPosition, palmPose.forward, out hit, laserRange))
             {
-                // Le laser touche quelque chose, par exemple, vous pouvez changer la couleur du laser pour visualiser l'impact
-                laser.GetComponent<Renderer>().material.color = Color.red;  // Change la couleur du laser pour indiquer un impact
-                // Par exemple, si vous touchez un objet, vous pouvez aussi appliquer une logique supplémentaire ici (détruire l'objet, infliger des dégâts, etc.)
+                // Si le laser touche quelque chose, mettre à jour la position du laser et changer sa couleur
+                lineRenderer.SetPosition(0, laserStartPosition);
+                lineRenderer.SetPosition(1, hit.point);
+                lineRenderer.material.color = Color.red;  // Change la couleur du laser à l'impact
             }
             else
             {
-                // Si rien n'est touché, le laser reste à sa couleur normale
-                laser.GetComponent<Renderer>().material.color = Color.green;  // Laser normal
+                // Si rien n'est touché, afficher le laser jusqu'à la portée maximale
+                lineRenderer.SetPosition(0, laserStartPosition);
+                lineRenderer.SetPosition(1, laserStartPosition + palmPose.forward * laserRange);
+                lineRenderer.material.color = Color.green;  // Laser normal
             }
-
+// Les particules suivront maintenant le laser car elles sont attachées à celui-ci
+            ParticleSystem particleSystem = laserInstance.GetComponentInChildren<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                particleSystem.transform.position = laserStartPosition;
+                particleSystem.transform.rotation = palmPose.rotation;
+            }
             // Destroye le laser après 1 seconde
-            Destroy(laser, 1f);  // Laser détruit après 1 seconde
+            Destroy(laserInstance, 1f);  // Laser détruit après 1 seconde
         }
 
-        // Attendre la fin du cooldown
-        yield return new WaitForSeconds(laserCooldown);
-
-        // Permet à nouveau de tirer le laser
-        canFireLaser = true;
+        // Permet à nouveau de tirer le laser après un délai
+        StartCoroutine(RestoreCooldown());
     }
 
+    // Coroutine pour réactiver le tir après un délai
+    private IEnumerator RestoreCooldown()
+    {
+        yield return new WaitForSeconds(1f);  // Attente du cooldown
+        canFireLaser = true;
+    }
 }

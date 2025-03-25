@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: HandsDefaultMaterial
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 55f83f6af3db3e54f99c765a0bf25ad7, type: 2}
+  m_Parent: {fileID: 2100000, guid: 39ac58871e5bd5e45a098578177a8b3c, type: 2}
   m_ModifiedSerializedProperties: 18
   m_ValidKeywords:
   - _EMISSION
