@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 740f51a1ac4b42088297287229057627, type: 3}
-  m_Name: Thumbs Up
+  m_Name: destructo disc pose
   m_EditorClassIdentifier: 
-  m_HandShape: {fileID: 11400000, guid: e863a2a22d6dda740bd9ee2298b3afd5, type: 2}
+  m_HandShape: {fileID: 11400000, guid: 7c8e6350599db9b4fa88835aeaf24c6e, type: 2}
   m_RelativeOrientation:
     m_UserConditions:
-    - m_HandAxis: 1
+    - m_HandAxis: 0
       m_AlignmentCondition: 0
       m_ReferenceDirection: 0
-      m_AngleTolerance: 60
+      m_AngleTolerance: 90
       m_IgnorePositionY: 0
     m_TargetConditions: []

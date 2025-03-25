@@ -1,42 +1,71 @@
 using UnityEngine;
+using UnityEngine.XR.Hands;
+using UnityEngine.XR.Management;
+using System.Collections;
 
-public class HandProjectile : MonoBehaviour
+public class LaserShooter2   : MonoBehaviour
 {
-    public GameObject projectilePrefab; // Préfabriqué du projectile
-    public float projectileSpeed = 10f; // Vitesse du projectile
-    public float forwardThreshold = 0.5f; // Seuil de mouvement vers l'avant
+    public GameObject laserPrefab;
+    public float laserDistanceFromHand = 0.5f;
+    public float laserRange = 10f;
+    public float laserCooldown = 5f;
 
-    private Vector3 previousPosition;
+    private bool canFireLaserLeft = true;
+    private bool canFireLaserRight = true;
+    private XRHandSubsystem handSubsystem; // Stocke l'instance du sous-système des mains
 
     void Start()
     {
-        previousPosition = transform.position;
+        var loader = XRGeneralSettings.Instance?.Manager?.activeLoader;
+        if (loader != null)
+        {
+            handSubsystem = loader.GetLoadedSubsystem<XRHandSubsystem>(); // Obtenir le sous-système
+        }
     }
 
-    void Update()
+    // Cette fonction sera appelée par un événement Unity lié au Hand Pose
+    public void ActivateLaser(string hand)
     {
-        Vector3 currentPosition = transform.position;
-        Vector3 movementDirection = currentPosition - previousPosition;
+        if (handSubsystem == null) return; // Vérifier si le sous-système des mains est disponible
 
-        // Vérifier si la main se déplace vers l'avant
-        if (movementDirection.z > forwardThreshold)
+        if (hand == "left" && canFireLaserLeft && handSubsystem.leftHand.isTracked)
         {
-            LaunchProjectile();
+            StartCoroutine(FireLaser(handSubsystem.leftHand, "left"));
         }
-
-        previousPosition = currentPosition;
+        else if (hand == "right" && canFireLaserRight && handSubsystem.rightHand.isTracked)
+        {
+            StartCoroutine(FireLaser(handSubsystem.rightHand, "right"));
+        }
     }
 
-    void LaunchProjectile()
+    private IEnumerator FireLaser(XRHand hand, string handSide)
     {
-        // Instancier le projectile à la position de la main
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        if (laserPrefab == null || hand == null) yield break;
 
-        // Définir la vitesse du projectile
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (handSide == "left") canFireLaserLeft = false;
+        if (handSide == "right") canFireLaserRight = false;
+
+        if (hand.GetJoint(XRHandJointID.Palm).TryGetPose(out Pose palmPose))
         {
-            rb.linearVelocity = transform.forward * projectileSpeed;
+            Vector3 laserPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;
+            GameObject laser = Instantiate(laserPrefab, laserPosition, palmPose.rotation);
+
+            RaycastHit hit;
+            if (Physics.Raycast(laserPosition, palmPose.forward, out hit, laserRange))
+            {
+                laser.GetComponent<Renderer>().material.color = Color.red;
+            }
+            else
+            {
+                laser.GetComponent<Renderer>().material.color = Color.green;
+            }
+
+            Destroy(laser, 1f);
         }
+
+        yield return new WaitForSeconds(laserCooldown);
+
+        if (handSide == "left") canFireLaserLeft = true;
+        if (handSide == "right") canFireLaserRight = true;
     }
 }
