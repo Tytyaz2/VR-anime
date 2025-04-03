@@ -19,15 +19,16 @@ public class WaveSpawner : MonoBehaviour
         // Initialisation du joueur dans Start()
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        // Vérification pour éviter les erreurs
+        // Vï¿½rification pour ï¿½viter les erreurs
         if (player == null)
         {
-            Debug.LogError("Aucun objet avec le tag 'Player' trouvé dans la scène!");
+            Debug.LogError("Aucun objet avec le tag 'Player' trouvï¿½ dans la scï¿½ne!");
         }
     }
 
     void Update()
     {
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
@@ -47,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
         }
 
-        // Augmentez la difficulté si vous voulez
+        // Augmentez la difficultï¿½ si vous voulez
         enemiesPerWave += 2;
     }
 
@@ -55,18 +56,18 @@ public class WaveSpawner : MonoBehaviour
     {
         if (spawnPoints == null || spawnPoints.Length == 0)
         {
-            Debug.LogError("Aucun point de spawn défini!");
+            Debug.LogError("Aucun point de spawn dï¿½fini!");
             return;
         }
 
-        // Choisir un point de spawn aléatoire
+        // Choisir un point de spawn alï¿½atoire
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        // Calculer une position aléatoire dans une sphère de 3m autour du spawn point
+        // Calculer une position alï¿½atoire dans une sphï¿½re de 3m autour du spawn point
         Vector3 randomOffset = Random.insideUnitSphere * 6f;
-        randomOffset.y = 0; // Conserver la même hauteur (optionnel)
+        randomOffset.y = 0; // Conserver la mï¿½me hauteur (optionnel)
 
-        // Instancier l'ennemi avec la position aléatoire
+        // Instancier l'ennemi avec la position alï¿½atoire
         GameObject enemy = Instantiate(
             enemyPrefab,
             spawnPoint.position + randomOffset,

@@ -26,59 +26,51 @@ public class EnemyInstantDeath : MonoBehaviour
     {
         if (isDead) return;
 
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Inflige des dégâts au joueur avant de mourir
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(10); // Dégâts ajustables
+            }
+            Die();
+        }
+        else if (collision.gameObject.CompareTag("Projectile"))
         // D�tection du joueur ou projectile
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Laser"))
         {
             Die();
-
-            // D�truire le projectile s'il en est un
-            if (collision.gameObject.CompareTag("Projectile"))
-            {
-                Destroy(collision.gameObject);
-            }
+            Destroy(collision.gameObject);
         }
     }
 
-    // Version alternative pour les triggers
     void OnTriggerEnter(Collider other)
     {
         if (isDead) return;
 
-        if (other.CompareTag("Player") || other.CompareTag("Projectile"))
+        if (other.CompareTag("Projectile"))
         {
-            Die();
-
-            // D�truire le projectile s'il en est un
-            if (other.CompareTag("Projectile"))
-            {
-                Destroy(other.gameObject);
-            }
+            // Tué par projectile → Score +1
+            ScoreManager.Instance.AddScore(1); // <-- On ajoute le score ICI
+            Destroy(other.gameObject);
+            Die(); // Appel normal de Die()
+        }
+        else if (other.CompareTag("Player"))
+        {
+            // Tué en touchant le joueur → Pas de score
+            Die(); // Pas d'appel à AddScore()
         }
     }
 
+    // Supprime l'incrémentation de score dans Die() pour éviter les doublons
     void Die()
     {
         isDead = true;
-
-        // Effets de mort
-        if (deathEffectPrefab != null)
-        {
-            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
-        }
-
-        if (deathSound != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
-
-        // Destruction ou d�sactivation
-        if (destroyOnDeath)
-        {
-            Destroy(gameObject, deathDelay);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+        // EFFETS DE MORT (garder tout sauf AddScore)
+        if (deathEffectPrefab != null) Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+        if (deathSound != null) audioSource.PlayOneShot(deathSound);
+        if (destroyOnDeath) Destroy(gameObject, deathDelay);
+        else gameObject.SetActive(false);
     }
 }
