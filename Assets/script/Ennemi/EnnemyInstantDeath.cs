@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyInstantDeath : MonoBehaviour
 {
     [Header("Death Settings")]
-    public float deathDelay = 0.1f; // Petit délai pour les effets
+    public float deathDelay = 0.1f; // Petit dï¿½lai pour les effets
     public bool destroyOnDeath = true;
 
     [Header("Effects")]
@@ -26,12 +26,12 @@ public class EnemyInstantDeath : MonoBehaviour
     {
         if (isDead) return;
 
-        // Détection du joueur ou projectile
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Projectile"))
+        // Dï¿½tection du joueur ou projectile
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Laser"))
         {
             Die();
 
-            // Détruire le projectile s'il en est un
+            // Dï¿½truire le projectile s'il en est un
             if (collision.gameObject.CompareTag("Projectile"))
             {
                 Destroy(collision.gameObject);
@@ -48,7 +48,7 @@ public class EnemyInstantDeath : MonoBehaviour
         {
             Die();
 
-            // Détruire le projectile s'il en est un
+            // Dï¿½truire le projectile s'il en est un
             if (other.CompareTag("Projectile"))
             {
                 Destroy(other.gameObject);
@@ -71,7 +71,7 @@ public class EnemyInstantDeath : MonoBehaviour
             audioSource.PlayOneShot(deathSound);
         }
 
-        // Destruction ou désactivation
+        // Destruction ou dï¿½sactivation
         if (destroyOnDeath)
         {
             Destroy(gameObject, deathDelay);

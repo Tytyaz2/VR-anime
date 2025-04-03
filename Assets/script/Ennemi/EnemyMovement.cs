@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float speed = 5f;
+    public float speed = 0f;
     public float rotationSpeed = 10f;
     public float stoppingDistance = 1f;
 

@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\users\\fmsoares\\ideaprojects\\vr-anime\\assets\\script\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\script\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\assets\\lasermachine\\core\\scripts\\laserdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\lasermachine\\core\\scripts\\laserdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\assets\\script\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\MovingLaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\script\\ATTAQUE\\MovingLaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +26,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Lit.shader",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-04-03T18:43:21.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "LaserData.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\LaserMachine\\Core\\Scripts\\LaserData.cs",
+              "RelativeDocumentMoniker": "Assets\\LaserMachine\\Core\\Scripts\\LaserData.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\LaserMachine\\Core\\Scripts\\LaserData.cs",
+              "RelativeToolTip": "Assets\\LaserMachine\\Core\\Scripts\\LaserData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T16:43:56.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MovingLaser.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\MovingLaser.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\ATTAQUE\\MovingLaser.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\MovingLaser.cs",
+              "RelativeToolTip": "Assets\\script\\ATTAQUE\\MovingLaser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T16:10:10.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "WaveSpawner.cs",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\WaveSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\script\\WaveSpawner.cs",
@@ -31,19 +76,6 @@
               "ViewState": "AQIAACkAAAAAAAAAAAAUwA4AAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T22:02:54.401Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EnemyMovement.cs",
-              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\EnemyMovement.cs",
-              "RelativeDocumentMoniker": "Assets\\script\\EnemyMovement.cs",
-              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\EnemyMovement.cs",
-              "RelativeToolTip": "Assets\\script\\EnemyMovement.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAYwCYAAABPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T22:01:52.804Z",
-              "EditorCaption": ""
             }
           ]
         }

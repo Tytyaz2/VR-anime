@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Anchor
+  - Laser
   - Projectile
+  - Anchor
   - SpawnPoint
   layers:
   - Default
