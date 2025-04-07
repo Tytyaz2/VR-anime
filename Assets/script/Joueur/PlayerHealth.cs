@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro; // Ajoute cette ligne
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public AudioClip damageSound;
+    [Header("UI Settings")] // Nouvelle section
+    public TextMeshProUGUI healthText; // Texte pour afficher les PV
 
     private AudioSource audioSource;
 
@@ -17,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+        UpdateHealthUI(); // Initialise l'affichage
     }
 
     public void TakeDamage(int damage)
@@ -24,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         if (damageSound != null) audioSource.PlayOneShot(damageSound);
 
-        Debug.Log("Player Health: " + currentHealth);
+        UpdateHealthUI(); // Met à jour l'UI après chaque dégât
 
         if (currentHealth <= 0)
         {
@@ -33,9 +37,16 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    void UpdateHealthUI() // Nouvelle méthode
+    {
+        if (healthText != null)
+            healthText.text = $"PV: {currentHealth}/{maxHealth}";
+    }
+
     void Die()
     {
         Debug.Log("Player is dead!");
-        // Gère la mort du joueur (Game Over, respawn, etc.)
+        UpdateHealthUI(); // Dernière mise à jour
+        // Gère la mort du joueur
     }
 }

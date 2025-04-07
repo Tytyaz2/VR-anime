@@ -36,12 +36,33 @@ public class EnemyInstantDeath : MonoBehaviour
             }
             Die();
         }
-        else if (collision.gameObject.CompareTag("Projectile"))
-        // D�tection du joueur ou projectile
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Laser"))
+        else if (collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Laser") )
         {
-            Die();
-            Destroy(collision.gameObject);
+        // Gestion différenciée ennemi normal vs boss
+                if (gameObject.CompareTag("Boss"))
+                {
+
+                    Debug.Log("Objet touché : " + gameObject.tag); // Doit afficher "Boss"
+
+                    // Comportement spécifique pour le boss
+                    BossHealth bossHealth = GetComponent<BossHealth>();
+                    if (bossHealth != null)
+                    {
+                        bossHealth.TakeDamage(1); // Réduit la barre de vie de 1
+                        ScoreManager.Instance.AddScore(1); // Ajoute au score
+                        Destroy(collision.gameObject); // Détruit le projectile
+
+                        // Le boss ne meurt pas immédiatement, sa barre de vie gère ça
+                    }
+                }
+                else
+                {
+                    // Comportement normal pour les ennemis standards
+                    ScoreManager.Instance.AddScore(1);
+                    Destroy(collision.gameObject);
+                    Die();
+                }
+
         }
     }
 
