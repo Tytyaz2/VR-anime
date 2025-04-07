@@ -9,6 +9,7 @@ public class LaserShooter : MonoBehaviour
     public float laserDistanceFromHand = 0.5f;  // Distance à laquelle le laser doit commencer devant la main
     private XRHandSubsystem handSubsystem;
     public float laserRange = 10f;
+    public AudioClip shootingSound;  // Le son de tir
     private bool canFireLaser = true;  // Permet de vérifier si le cooldown est terminé
 
     private void Start()
@@ -26,17 +27,25 @@ public class LaserShooter : MonoBehaviour
         // Désactive la possibilité de tirer jusqu'à la fin du cooldown
         canFireLaser = false;
 
-        if (hand.GetJoint(XRHandJointID.Palm).TryGetPose(out Pose palmPose))
+        if (hand.GetJoint(XRHandJointID.IndexTip).TryGetPose(out Pose indexTipPose))
         {
-            // Crée le laser à la position de la main mais décalé dans la direction de la main
-            Vector3 laserPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;
-            GameObject laserInstance = Instantiate(laserPrefab, laserPosition, palmPose.rotation);
+            AudioSource audioSource = laserPrefab.AddComponent<AudioSource>();
+            if (shootingSound != null)
+            {
+                audioSource.clip = shootingSound;
+                audioSource.loop = false; // Le son ne doit pas boucler
+                audioSource.volume = 0.2f;  // Réduire le volume de 5 fois
 
-            // Définir la position du départ du laser juste devant la main
-            Vector3 laserStartPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;
-
+                // Démarrer l'audio, mais à partir de la position 0.5 seconde du clip
+                audioSource.time = 0.5f;
+                audioSource.Play();
+            }
+            // Crée le laser au bout de l'index dans la direction de l'index
+            Vector3 laserPosition = indexTipPose.position + indexTipPose.forward * laserDistanceFromHand;
+            GameObject laserInstance = Instantiate(laserPrefab, laserPosition, indexTipPose.rotation);
+            
             // Destroye le laser après 1 seconde
-            Destroy(laserInstance, 1f);  // Laser détruit après 1 seconde
+            Destroy(laserInstance, 1f);
         }
 
         // Permet à nouveau de tirer le laser après un délai

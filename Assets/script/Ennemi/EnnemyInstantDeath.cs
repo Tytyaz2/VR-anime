@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyInstantDeath : MonoBehaviour
 {
     [Header("Death Settings")]
+    public UnityEvent OnDeath;
     public float deathDelay = 0.1f; // Petit d�lai pour les effets
     public bool destroyOnDeath = true;
 
@@ -37,19 +39,22 @@ public class EnemyInstantDeath : MonoBehaviour
             Die();
         }
         else if (collision.gameObject.CompareTag("Projectile"))
-        // D�tection du joueur ou projectile
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Laser"))
         {
             Die();
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Laser"))
+        {
+            Die();
+        }
     }
+
 
     void OnTriggerEnter(Collider other)
     {
         if (isDead) return;
 
-        if (other.CompareTag("Projectile"))
+        if (other.CompareTag("Projectile") || other.CompareTag("Laser"))
         {
             // Tué par projectile → Score +1
             ScoreManager.Instance.AddScore(1); // <-- On ajoute le score ICI
@@ -66,6 +71,7 @@ public class EnemyInstantDeath : MonoBehaviour
     // Supprime l'incrémentation de score dans Die() pour éviter les doublons
     void Die()
     {
+        OnDeath.Invoke();
         isDead = true;
         // EFFETS DE MORT (garder tout sauf AddScore)
         if (deathEffectPrefab != null) Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
