@@ -40,7 +40,7 @@ public class EnemyInstantDeath : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Projectile"))
         {
-            Die();
+                 Die();
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Laser"))

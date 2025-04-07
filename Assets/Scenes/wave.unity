@@ -627,7 +627,7 @@ PrefabInstance:
     - target: {fileID: 155762395201772532, guid: a82ef166f75835d449454288a10ba0f4, type: 3}
       propertyPath: shootingSound
       value: 
-      objectReference: {fileID: 8300000, guid: 9d308dcbfd8ccf948afbbacaf06705e9, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 155762395201772532, guid: a82ef166f75835d449454288a10ba0f4, type: 3}
       propertyPath: laserDistanceFromHand
       value: 20
@@ -915,7 +915,7 @@ PrefabInstance:
     - target: {fileID: 1398459422509195151, guid: a82ef166f75835d449454288a10ba0f4, type: 3}
       propertyPath: shootingSound
       value: 
-      objectReference: {fileID: 8300000, guid: 9d308dcbfd8ccf948afbbacaf06705e9, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1398459422509195151, guid: a82ef166f75835d449454288a10ba0f4, type: 3}
       propertyPath: laserDistanceFromHand
       value: 20
@@ -1760,9 +1760,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3456149073526297135, guid: 46aedb77170b2884ca513a98b98eb334, type: 3}
+      propertyPath: bossWaveNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456149073526297135, guid: 46aedb77170b2884ca513a98b98eb334, type: 3}
       propertyPath: waveMessageText
       value: 
       objectReference: {fileID: 4897984750565331588}
+    - target: {fileID: 3456149073526297135, guid: 46aedb77170b2884ca513a98b98eb334, type: 3}
+      propertyPath: initialCountdown
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7023908046785647506, guid: 46aedb77170b2884ca513a98b98eb334, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

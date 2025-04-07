@@ -9,7 +9,6 @@ public class LaserShooter : MonoBehaviour
     public float laserDistanceFromHand = 0.5f;  // Distance à laquelle le laser doit commencer devant la main
     private XRHandSubsystem handSubsystem;
     public float laserRange = 10f;
-    public AudioClip shootingSound;  // Le son de tir
     private bool canFireLaser = true;  // Permet de vérifier si le cooldown est terminé
 
     private void Start()
@@ -29,17 +28,7 @@ public class LaserShooter : MonoBehaviour
 
         if (hand.GetJoint(XRHandJointID.IndexTip).TryGetPose(out Pose indexTipPose))
         {
-            AudioSource audioSource = laserPrefab.AddComponent<AudioSource>();
-            if (shootingSound != null)
-            {
-                audioSource.clip = shootingSound;
-                audioSource.loop = false; // Le son ne doit pas boucler
-                audioSource.volume = 0.2f;  // Réduire le volume de 5 fois
 
-                // Démarrer l'audio, mais à partir de la position 0.5 seconde du clip
-                audioSource.time = 0.5f;
-                audioSource.Play();
-            }
             // Crée le laser au bout de l'index dans la direction de l'index
             Vector3 laserPosition = indexTipPose.position + indexTipPose.forward * laserDistanceFromHand;
             GameObject laserInstance = Instantiate(laserPrefab, laserPosition, indexTipPose.rotation);

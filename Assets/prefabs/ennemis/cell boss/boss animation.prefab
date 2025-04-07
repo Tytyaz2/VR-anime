@@ -90,6 +90,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6501889211345830625}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8350367597837031377}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4641308274634379132}
   m_SourcePrefab: {fileID: 100100000, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
 --- !u!1 &1979919830738122356 stripped
 GameObject:
@@ -235,3 +241,38 @@ MonoBehaviour:
   rotationSpeed: 10
   stoppingDistance: 1
   player: {fileID: 0}
+--- !u!114 &-8350367597837031377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979919830738122356}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6080ab1db7eeb3647b5c06619b2da938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  deathDelay: 0.1
+  destroyOnDeath: 1
+  deathEffectPrefab: {fileID: 0}
+  deathSound: {fileID: 0}
+--- !u!114 &4641308274634379132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979919830738122356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23035ef584f205b4bb798c8b1ecf5bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  scoreValue: 1
