@@ -254,10 +254,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6080ab1db7eeb3647b5c06619b2da938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 30
+  currentHealth: 0
+  invincible: 0
+  healthBarPrefab: {fileID: 2348440177519903952, guid: 152fd022ffc37684dbc104e918048b0c, type: 3}
+  healthBarOffset: {x: 0, y: 2, z: 0}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   deathDelay: 0.1
   destroyOnDeath: 1
+  hitEffectPrefab: {fileID: 0}
   deathEffectPrefab: {fileID: 0}
+  hitSound: {fileID: 0}
   deathSound: {fileID: 0}
+  physicsCollider: {fileID: 0}
+  hurtbox: {fileID: 0}
 --- !u!65 &-6637564911302315584
 BoxCollider:
   m_ObjectHideFlags: 0

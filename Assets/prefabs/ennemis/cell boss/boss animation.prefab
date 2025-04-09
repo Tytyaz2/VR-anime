@@ -90,6 +90,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6501889211345830625}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5896328311720445485}
   m_SourcePrefab: {fileID: 100100000, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
 --- !u!1 &1979919830738122356 stripped
 GameObject:
@@ -233,5 +236,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rotationSpeed: 10
-  stoppingDistance: 1
+  stoppingDistance: 10
   player: {fileID: 0}
+--- !u!114 &5896328311720445485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979919830738122356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6080ab1db7eeb3647b5c06619b2da938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  currentHealth: 0
+  invincible: 0
+  healthBarPrefab: {fileID: 2348440177519903952, guid: 4436936a17b56ff4ba78058594c3393f, type: 3}
+  healthBarOffset: {x: 0, y: 30, z: 0}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  deathDelay: 0.1
+  destroyOnDeath: 1
+  hitEffectPrefab: {fileID: 0}
+  deathEffectPrefab: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  physicsCollider: {fileID: 0}
+  hurtbox: {fileID: 0}
