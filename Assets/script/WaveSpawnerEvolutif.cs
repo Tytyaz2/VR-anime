@@ -26,6 +26,7 @@ public class WaveSpawnerEvolutif : MonoBehaviour
     private float currentTimeBetweenWaves;
     private int currentEnemiesPerWave;
     private float currentSpawnRate;
+    private bool isSpawning = true; // Nouvelle variable pour contrôler le spawn
 
     void Start()
     {
@@ -37,6 +38,8 @@ public class WaveSpawnerEvolutif : MonoBehaviour
 
     void Update()
     {
+        if (!isSpawning) return; // Ne rien faire si le spawn est arrêté
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
@@ -50,6 +53,8 @@ public class WaveSpawnerEvolutif : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        if (!isSpawning) yield break; // Sortir si le spawn est arrêté
+
         waveNumber++;
         bool isBossWave = waveNumber % bossWaveInterval == 0;
 
@@ -63,10 +68,19 @@ public class WaveSpawnerEvolutif : MonoBehaviour
         {
             for (int i = 0; i < currentEnemiesPerWave; i++)
             {
+                if (!isSpawning) yield break; // Sortir si le spawn est arrêté pendant la vague
                 SpawnEnemy();
                 yield return new WaitForSeconds(currentSpawnRate);
             }
         }
+    }
+
+    // Fonction pour arrêter le spawn
+    public void StopSpawning()
+    {
+        isSpawning = false;
+        StopAllCoroutines(); // Arrête toutes les coroutines en cours (comme SpawnWave)
+        Debug.Log("Spawn des vagues arrêté");
     }
 
     void UpgradeEnemyStats()

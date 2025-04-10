@@ -9,6 +9,7 @@ public class LaserShooter : MonoBehaviour
     public float laserDistanceFromHand = 0.5f;  // Distance à laquelle le laser doit commencer devant la main
     private XRHandSubsystem handSubsystem;
     public float laserRange = 10f;
+    public AudioClip laserClip;
     private bool canFireLaser = true;  // Permet de vérifier si le cooldown est terminé
 
     private void Start()
@@ -32,9 +33,26 @@ public class LaserShooter : MonoBehaviour
             // Crée le laser au bout de l'index dans la direction de l'index
             Vector3 laserPosition = indexTipPose.position + indexTipPose.forward * laserDistanceFromHand;
             GameObject laserInstance = Instantiate(laserPrefab, laserPosition, indexTipPose.rotation);
-            
-            // Destroye le laser après 1 seconde
-            Destroy(laserInstance, 1f);
+            // Récupère le AttackData du prefab instancié
+            AttackData attackData = laserInstance.GetComponent<AttackData>();
+
+            // Ne joue le son que si l'attaque est débloquée
+            if (attackData != null && attackData.isUnlocked)
+            {
+                AudioSource audioSource = laserInstance.AddComponent<AudioSource>();
+                if (laserClip != null)
+                {
+                    audioSource.clip = laserClip;
+                    audioSource.loop = false; // Le son ne doit pas boucler
+                    audioSource.volume = 0.1f;  // Réduire le volume de 5 fois
+
+                    // Démarrer l'audio, mais à partir de la position 0.5 seconde du clip
+                    audioSource.time = 0.5f;
+                    audioSource.Play();
+                }
+                // Destroye le laser après 1 seconde
+                Destroy(laserInstance, 1f);
+            }
         }
 
         // Permet à nouveau de tirer le laser après un délai

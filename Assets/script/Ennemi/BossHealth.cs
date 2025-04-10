@@ -20,11 +20,12 @@ public class BossHealth : MonoBehaviour
     public AudioClip deathSound;
 
     private int currentHits = 0;
-    private bool isDead = false;
+    public bool isDead = false;
     private AudioSource audioSource;
     private HashSet<Collider> processedHits = new HashSet<Collider>();
     private float lastHitTime;
     private const float HIT_COOLDOWN = 0.1f;
+    private BossController bossController;
 
     private void Start()
     {
@@ -138,6 +139,9 @@ public class BossHealth : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
+        bossController = FindAnyObjectByType<BossController>();
+        bossController.OnBossDeath();
+        
 
         Debug.Log("[BossHealth] Boss defeated!");
 

@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|c:\\users\\fmsoares\\ideaprojects\\vr-anime\\assets\\script\\attaque\\attacktype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\attaque\\attacktype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|c:\\users\\fmsoares\\ideaprojects\\vr-anime\\assets\\script\\ennemi\\bosscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ennemi\\bosscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\assets\\script\\ennemi\\bosshealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ennemi\\bosshealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\assets\\script\\ennemi\\ennemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ennemi\\ennemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|c:\\users\\fmsoares\\ideaprojects\\vr-anime\\assets\\script\\ennemi\\bosshealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ennemi\\bosshealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|c:\\users\\fmsoares\\ideaprojects\\vr-anime\\assets\\script\\ennemi\\healthbarennemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ennemi\\healthbarennemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|c:\\users\\fmsoares\\ideaprojects\\vr-anime\\assets\\script\\wavespawnerevolutif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\wavespawnerevolutif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\assets\\script\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|c:\\users\\fmsoares\\ideaprojects\\vr-anime\\assets\\script\\attaque\\attacktype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\attaque\\attacktype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB7ABED6-113D-0AB9-638E-884E41EFBF79}|Assembly-CSharp.csproj|C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\assets\\script\\attaque\\laser shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,37 +62,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AttackType.cs",
-              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\AttackType.cs",
-              "RelativeDocumentMoniker": "Assets\\script\\ATTAQUE\\AttackType.cs",
-              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\AttackType.cs",
-              "RelativeToolTip": "Assets\\script\\ATTAQUE\\AttackType.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "DocumentIndex": 3,
+              "Title": "HealthBarEnnemy.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\HealthBarEnnemy.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\Ennemi\\HealthBarEnnemy.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\HealthBarEnnemy.cs",
+              "RelativeToolTip": "Assets\\script\\Ennemi\\HealthBarEnnemy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T22:41:06.412Z",
+              "WhenOpened": "2025-04-10T17:42:00.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BossController.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\BossController.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\Ennemi\\BossController.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\BossController.cs",
+              "RelativeToolTip": "Assets\\script\\Ennemi\\BossController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T16:29:10.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "EnnemyHealth.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\EnnemyHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\Ennemi\\EnnemyHealth.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\EnnemyHealth.cs",
+              "RelativeToolTip": "Assets\\script\\Ennemi\\EnnemyHealth.cs",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAcwIgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T22:29:24.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "BossHealth.cs",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\BossHealth.cs",
               "RelativeDocumentMoniker": "Assets\\script\\Ennemi\\BossHealth.cs",
               "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\BossHealth.cs",
               "RelativeToolTip": "Assets\\script\\Ennemi\\BossHealth.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAwwKkAAAABAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAgwBsAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T01:18:30.967Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WaveSpawnerEvolutif.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\WaveSpawnerEvolutif.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\WaveSpawnerEvolutif.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\WaveSpawnerEvolutif.cs",
+              "RelativeToolTip": "Assets\\script\\WaveSpawnerEvolutif.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAqwHcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T16:50:40.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "WaveSpawner.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\WaveSpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\WaveSpawner.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\WaveSpawner.cs",
+              "RelativeToolTip": "Assets\\script\\WaveSpawner.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBMAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T22:02:54.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "targetSpawner.cs",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\targetSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\script\\targetSpawner.cs",
@@ -93,6 +157,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "AttackType.cs",
+              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\AttackType.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\ATTAQUE\\AttackType.cs",
+              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\AttackType.cs",
+              "RelativeToolTip": "Assets\\script\\ATTAQUE\\AttackType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T22:41:06.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ProjectileShooter.cs",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\ProjectileShooter.cs",
               "RelativeDocumentMoniker": "Assets\\script\\ATTAQUE\\ProjectileShooter.cs",
@@ -104,20 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EnnemyHealth.cs",
-              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\EnnemyHealth.cs",
-              "RelativeDocumentMoniker": "Assets\\script\\Ennemi\\EnnemyHealth.cs",
-              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\Ennemi\\EnnemyHealth.cs",
-              "RelativeToolTip": "Assets\\script\\Ennemi\\EnnemyHealth.cs",
-              "ViewState": "AQIAAIUAAAAAAAAAAAAmwKkAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T22:29:24.505Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Laser Shooter.cs",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\Laser Shooter.cs",
               "RelativeDocumentMoniker": "Assets\\script\\ATTAQUE\\Laser Shooter.cs",
@@ -129,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Lit.shader",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal\\Shaders\\Lit.shader",
@@ -141,7 +205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "LaserData.cs",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\LaserMachine\\Core\\Scripts\\LaserData.cs",
               "RelativeDocumentMoniker": "Assets\\LaserMachine\\Core\\Scripts\\LaserData.cs",
@@ -153,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "MovingLaser.cs",
               "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\ATTAQUE\\MovingLaser.cs",
               "RelativeDocumentMoniker": "Assets\\script\\ATTAQUE\\MovingLaser.cs",
@@ -162,18 +226,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T16:10:10.409Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WaveSpawner.cs",
-              "DocumentMoniker": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\WaveSpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\script\\WaveSpawner.cs",
-              "ToolTip": "C:\\Users\\fmsoares\\IdeaProjects\\VR-anime\\Assets\\script\\WaveSpawner.cs",
-              "RelativeToolTip": "Assets\\script\\WaveSpawner.cs",
-              "ViewState": "AQIAAKQAAAAAAAAAAAAuwKcAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T22:02:54.401Z"
             }
           ]
         }

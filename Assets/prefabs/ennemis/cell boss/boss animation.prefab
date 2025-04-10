@@ -93,6 +93,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5896328311720445485}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 544095157757258919}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1394476019183569781}
   m_SourcePrefab: {fileID: 100100000, guid: 6393e8fed6d63124dbd6ad9ad5e792e7, type: 3}
 --- !u!1 &1979919830738122356 stripped
 GameObject:
@@ -116,7 +122,13 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+    'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+    'mixamorig:RightHandIndex3'\n\tTransform 'mixamorig:RightFoot'\n\tand more ...\n\tFrom
+    animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -236,8 +248,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rotationSpeed: 10
-  stoppingDistance: 10
-  player: {fileID: 0}
+  stoppingDistance: 9
+  footstepSounds:
+  - {fileID: 8300000, guid: 2772aa179a2a3b648b7524db6ef557c9, type: 3}
+  footstepInterval: 4.5
+  spatialBlend: 0.8
+  minDistance: 5
+  maxDistance: 50
+  pitchVariation: 0.2
 --- !u!114 &5896328311720445485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6080ab1db7eeb3647b5c06619b2da938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 500
   currentHealth: 0
   invincible: 0
   healthBarPrefab: {fileID: 2348440177519903952, guid: 4436936a17b56ff4ba78058594c3393f, type: 3}
@@ -264,5 +282,125 @@ MonoBehaviour:
   deathEffectPrefab: {fileID: 0}
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
+  hitSoundVolume: 0.7
+  deathSoundVolume: 1
+  hitPitchRandomization: 0.1
+  sound3DBlend: 1
   physicsCollider: {fileID: 0}
   hurtbox: {fileID: 0}
+--- !u!114 &544095157757258919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979919830738122356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df0dbb471083ec4286e6347d32633c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossAnimator: {fileID: 8408769854930821100}
+  defeatTrigger: IsCloseToPlayer
+  defeatDistance: 10
+  defeatTextUI: {fileID: 0}
+  defeatPanel: {fileID: 0}
+  defeatAnimationLength: 12.1
+  explosionPrefab: {fileID: 7835689877788694331, guid: 7d336d6aa2249904cbca795f0280873c, type: 3}
+--- !u!82 &1394476019183569781
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979919830738122356}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
