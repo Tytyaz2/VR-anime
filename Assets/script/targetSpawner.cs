@@ -1,15 +1,27 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class TargetSpawner : MonoBehaviour
 {
+    public TextMeshProUGUI messageText; // Texte pour les messages d’attente
+    public string[] pauseMessages; // 3 messages différents
+    private int targetsDestroyedCount = 0;
+    private bool isFirstSpawn = true;
+
+    public VideoPlayer videoPlayer;         // Le composant VideoPlayer
+    public VideoClip[] pauseVideos;
+    public GameObject nextSceneButton;
+
+
     public GameObject targetPrefab;  // Prefab de la cible
     public Transform player;         // Référence au joueur
-    public float minDistance = 3f;   // Distance minimale de spawn
-    public float maxDistance = 5f;   // Distance maximale de spawn
-    public float minHeight = 1f;     // Hauteur minimale
-    public float maxHeight = 3f;     // Hauteur maximale
+    public float minDistance = 7f;   // Distance minimale de spawn
+    public float maxDistance = 10f;   // Distance maximale de spawn
+    public float minHeight = 2f;     // Hauteur minimale
+    public float maxHeight = 5f;     // Hauteur maximale
     public TextMeshProUGUI scoreText; // Référence au texte du score
 
     private GameObject currentTarget = null; // Stocke la cible actuelle
@@ -26,18 +38,32 @@ public class TargetSpawner : MonoBehaviour
 
     IEnumerator SpawnTargetWhenDestroyed()
     {
+        // Première pause de 15 secondes avec message
+        if (isFirstSpawn)
+        {
+            isFirstSpawn = false;
+            yield return ShowPauseMessage(0); // Affiche le premier message
+        }
+
         while (true)
         {
-            // Attendre tant qu'une cible est encore présente
+            // Attendre que la cible soit détruite
             while (currentTarget != null)
             {
                 yield return null;
             }
 
-            // Spawn une nouvelle cible
+            targetsDestroyedCount++;
+
+            // Toutes les 10 cibles détruites, pause avec message
+            if (targetsDestroyedCount % 5 == 0)
+            {
+                int msgIndex = Mathf.Clamp((targetsDestroyedCount / 5), 0, pauseMessages.Length - 1);
+                yield return ShowPauseMessage(msgIndex);
+            }
+
             SpawnTarget();
 
-            // Attendre un petit délai pour éviter le spawn instantané
             yield return new WaitForSeconds(0.5f);
         }
     }
@@ -93,4 +119,49 @@ public class TargetSpawner : MonoBehaviour
         score += amount;
         scoreText.text = "Score: " + score;  // Met à jour l'affichage du score
     }
+
+    IEnumerator ShowPauseMessage(int messageIndex)
+    {
+        if (messageText != null && pauseMessages.Length > messageIndex)
+        {
+            messageText.text = pauseMessages[messageIndex];
+            messageText.gameObject.SetActive(true);
+        }
+
+        if (videoPlayer != null && pauseVideos.Length > messageIndex)
+        {
+            videoPlayer.clip = pauseVideos[messageIndex];
+            videoPlayer.gameObject.SetActive(true);
+            videoPlayer.Play();
+        }
+
+        // Si c'est le dernier message, on affiche aussi le bouton
+        if (messageIndex == pauseMessages.Length - 1 && nextSceneButton != null)
+        {
+            nextSceneButton.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(15f);
+
+        // On cache le texte et la vidéo
+        if (messageText != null)
+            messageText.gameObject.SetActive(false);
+
+        if (videoPlayer != null)
+        {
+            videoPlayer.Stop();
+            videoPlayer.gameObject.SetActive(false);
+        }
+
+        // Le bouton reste visible pour permettre à l'utilisateur de cliquer
+    }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene("wave"); // Remplace par le nom exact de ta prochaine scène
+    }
+
+
 }
+
+

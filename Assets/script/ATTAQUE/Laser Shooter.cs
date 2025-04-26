@@ -9,6 +9,7 @@ public class LaserShooter : MonoBehaviour
     public float laserDistanceFromHand = 0.5f;  // Distance à laquelle le laser doit commencer devant la main
     private XRHandSubsystem handSubsystem;
     public float laserRange = 10f;
+    public AudioClip laserClip;
     private bool canFireLaser = true;  // Permet de vérifier si le cooldown est terminé
 
     private void Start()
@@ -26,17 +27,32 @@ public class LaserShooter : MonoBehaviour
         // Désactive la possibilité de tirer jusqu'à la fin du cooldown
         canFireLaser = false;
 
-        if (hand.GetJoint(XRHandJointID.Palm).TryGetPose(out Pose palmPose))
+        if (hand.GetJoint(XRHandJointID.IndexTip).TryGetPose(out Pose indexTipPose))
         {
-            // Crée le laser à la position de la main mais décalé dans la direction de la main
-            Vector3 laserPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;
-            GameObject laserInstance = Instantiate(laserPrefab, laserPosition, palmPose.rotation);
 
-            // Définir la position du départ du laser juste devant la main
-            Vector3 laserStartPosition = palmPose.position + palmPose.forward * laserDistanceFromHand;
+            // Crée le laser au bout de l'index dans la direction de l'index
+            Vector3 laserPosition = indexTipPose.position + indexTipPose.forward * laserDistanceFromHand;
+            GameObject laserInstance = Instantiate(laserPrefab, laserPosition, indexTipPose.rotation);
+            // Récupère le AttackData du prefab instancié
+            AttackData attackData = laserInstance.GetComponent<AttackData>();
 
-            // Destroye le laser après 1 seconde
-            Destroy(laserInstance, 1f);  // Laser détruit après 1 seconde
+            // Ne joue le son que si l'attaque est débloquée
+            if (attackData != null && attackData.isUnlocked)
+            {
+                AudioSource audioSource = laserInstance.AddComponent<AudioSource>();
+                if (laserClip != null)
+                {
+                    audioSource.clip = laserClip;
+                    audioSource.loop = false; // Le son ne doit pas boucler
+                    audioSource.volume = 0.1f;  // Réduire le volume de 5 fois
+
+                    // Démarrer l'audio, mais à partir de la position 0.5 seconde du clip
+                    audioSource.time = 0.5f;
+                    audioSource.Play();
+                }
+                // Destroye le laser après 1 seconde
+                Destroy(laserInstance, 1f);
+            }
         }
 
         // Permet à nouveau de tirer le laser après un délai
