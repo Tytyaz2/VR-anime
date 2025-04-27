@@ -116,7 +116,11 @@ public class EnemyHealth : MonoBehaviour
             rb.AddForce(hitDirection.normalized * 5f, ForceMode.Impulse);
 
         if (currentHealth <= 0)
+        {
+            //Ajout du score quand un petit monstre meurt
+            ScoreManager.Instance.AddScore(10);
             Die();
+        }
     }
 
     void PlayHitSound(Vector3 hitDirection)
@@ -152,9 +156,6 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         isDead = true;
-        OnDeath.Invoke();
-        playerStats.AddExp(100);
-        
 
         if (physicsCollider != null) physicsCollider.enabled = false;
         if (hurtbox != null) hurtbox.enabled = false;
@@ -199,6 +200,19 @@ public class EnemyHealth : MonoBehaviour
             TakeDamage(attack.damage, transform.position - other.transform.position);
             if (attack.destroyOnImpact)
                 Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            if (other.TryGetComponent<PlayerHealth>(out var playerHealth))
+            {
+                playerHealth.TakeDamage(10); // tu peux changer le "10" si besoin
+            }
+         // 👇 Fait disparaître l'ennemi directement après contact
+             if (!isDead)
+            {
+               Die();
+            }
         }
     }
 }

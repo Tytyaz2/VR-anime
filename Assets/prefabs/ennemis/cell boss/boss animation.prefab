@@ -307,6 +307,9 @@ MonoBehaviour:
   defeatPanel: {fileID: 0}
   defeatAnimationLength: 12.1
   explosionPrefab: {fileID: 7835689877788694331, guid: 7d336d6aa2249904cbca795f0280873c, type: 3}
+  alarmSound: {fileID: 8300000, guid: bd4e5fe1024f1bf49b5c8379b6e047ac, type: 3}
+  alarmVolume: 1
+  defeatSound: {fileID: 8300000, guid: fd3e64822ebebad4780a941e4e159c10, type: 3}
 --- !u!82 &1394476019183569781
 AudioSource:
   m_ObjectHideFlags: 0

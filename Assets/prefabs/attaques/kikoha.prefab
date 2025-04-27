@@ -5040,19 +5040,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: kikoha
-  isUnlocked: 0
+  isUnlocked: 1
   unlockLevel: 0
   damage: 10
   knockbackForce: 3
   destroyOnImpact: 1
   destroyDelay: 0.1
-  impactEffect: {fileID: 0}
-  impactSound: {fileID: 0}
-  launchSound: {fileID: 0}
-  soundVolume: 0.7
-  effectLifetime: 2
-  shootForce: 20
-  forceMode: 1
 --- !u!1 &8053544747440736415
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,18 +5,21 @@ public class BossController : MonoBehaviour
 {
     [Header("Animation")]
     [SerializeField] private Animator bossAnimator;
-    [SerializeField] private string defeatTrigger = "IsCloseToPlayer"; // Paramètre dans l'Animator
+    [SerializeField] private string defeatTrigger = "IsCloseToPlayer"; // Paramï¿½tre dans l'Animator
 
-    [Header("Détection")]
+    [Header("Dï¿½tection")]
     [SerializeField] private float defeatDistance = 5f;
 
     [Header("Game Over")]
-    [SerializeField] private TMP_Text defeatTextUI;
+    //[SerializeField] private TMP_Text defeatTextUI;
     [SerializeField] private GameObject defeatPanel;
-    [SerializeField] private float defeatAnimationLength = 12.1f; // Durée de l'animation
+    [SerializeField] private float defeatAnimationLength = 12.1f; // Durï¿½e de l'animation
 
     [Header("Explosion Settings")]
     public GameObject explosionPrefab;
+
+    [Header("UI Boss Text")]
+    private TextMeshProUGUI bossTextUI;
 
     private Transform player;
     private WaveSpawnerEvolutif waveSpawner;
@@ -28,9 +31,24 @@ public class BossController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         bossHealth = GetComponent<BossHealth>();
         waveSpawner = FindAnyObjectByType<WaveSpawnerEvolutif>();
+        //audioSource = GetComponent<AudioSource>();
 
         if (defeatPanel != null)
             defeatPanel.SetActive(false);
+
+        SoundManager.Instance.PlayAlarmMusic();
+
+        bossTextUI = GameObject.Find("BossText")?.GetComponent<TextMeshProUGUI>();
+
+        if (bossTextUI != null)
+        {
+            bossTextUI.gameObject.SetActive(true);
+            bossTextUI.text = "! BOSS ARRIVÃ‰ !";
+        }
+        else
+        {
+            Debug.LogWarning("BossText pas trouvÃ© !");
+        }
     }
 
     void Update()
@@ -47,20 +65,26 @@ public class BossController : MonoBehaviour
     {
         defeatTriggered = true;
 
-        
+        SoundManager.Instance.PlayBossDanceMusic();
 
-        // 2. Lancer l'animation de défaite
+        // 2. Lancer l'animation de dï¿½faite
         bossAnimator.SetBool(defeatTrigger, defeatTriggered);
 
-        // 3. Programmer l'affichage du message après l'animation
+        // 3. Programmer l'affichage du message aprï¿½s l'animation
         Invoke("ShowDefeatMessage", defeatAnimationLength);
+
     }
 
     void ShowDefeatMessage()
     {
         if (bossHealth == null || !bossHealth.isDead)
         {
-            Debug.Log("Le boss vous a tué");
+            Debug.Log("Le boss vous a tuï¿½");
+            if (player != null && player.TryGetComponent<PlayerHealth>(out var playerHealth))
+                    {
+                        playerHealth.TakeDamage(9999);
+                    }
+
             waveSpawner?.StopSpawning();
 
             if (explosionPrefab != null)
@@ -70,7 +94,7 @@ public class BossController : MonoBehaviour
                                     + transform.forward * 0.2f
                                     + Vector3.up * 3f;
 
-                // Orientation : vers l'avant du boss (ou vers le joueur si préféré)
+                // Orientation : vers l'avant du boss (ou vers le joueur si prï¿½fï¿½rï¿½)
                 Quaternion explosionRot = transform.rotation;
 
                 GameObject explosion = Instantiate(
@@ -82,10 +106,20 @@ public class BossController : MonoBehaviour
             }
         }
     }
-    // À appeler si le boss meurt pendant l'animation
+    // ï¿½ appeler si le boss meurt pendant l'animation
     public void OnBossDeath()
     {
         CancelInvoke("ShowDefeatMessage");
         defeatTriggered = false;
+
+        //Ajout du score quand le boss meurt
+        ScoreManager.Instance.AddScore(50);
+
+        SoundManager.Instance.PlayBackgroundMusic();
+
+        if (bossTextUI != null)
+        {
+            bossTextUI.gameObject.SetActive(false);
+        }
     }
 }

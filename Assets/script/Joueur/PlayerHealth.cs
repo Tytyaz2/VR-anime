@@ -17,12 +17,14 @@ public class PlayerHealth : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        SoundManager.Instance.PlayBackgroundMusic();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (damageSound != null) audioSource.PlayOneShot(damageSound);
+        if (damageSound != null) audioSource.PlayOneShot(damageSound, 0.1f); // Volume entre 0.0 et 1.0
 
         Debug.Log("Player Health: " + currentHealth);
 

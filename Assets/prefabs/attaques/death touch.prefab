@@ -261,18 +261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: death touch
-  isUnlocked: 0
+  isUnlocked: 1
   unlockLevel: 1
   damage: 50
-  damageType: 0
-  criticalChance: 0.1
-  criticalMultiplier: 1.5
-  destroyOnImpact: 0
   knockbackForce: 100
+  destroyOnImpact: 0
   destroyDelay: 0.1
-  impactEffect: {fileID: 0}
-  impactSound: {fileID: 0}
-  soundVolume: 0.7
-  effectLifetime: 2
-  pierceEnemies: 0
-  maxPierceCount: 1
