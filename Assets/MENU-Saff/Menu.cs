@@ -23,7 +23,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Démarrer le jeu...");
-        SceneManager.LoadScene("wave");
+        SceneManager.LoadScene("Main");
     }
 
     public void QuitGame()
