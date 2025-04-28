@@ -1,0 +1,10 @@
+# ninja log v5
+28	2249	7675178975377156	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	d96d15551ce5acae
+20	2487	7675178977576626	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	8a8eb28a850b0c7a
+63	2551	7675178977933513	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	6428b128504c57d2
+42	2952	7675178982129041	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	e6b4e3aa80cc0812
+51	3008	7675178982500858	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	6c51f0f73c7a52ff
+12	3147	7675178984165528	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	694ebed5c7a9b8e1
+35	3570	7675178988550311	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	ac81cd1517c06f4b
+1	3926	7675178992160191	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	6b94a230ed52b4f8
+3927	4138	7675178994364864	H:/Downloads/VR-anime-final-Flavio/VR-anime-final-Flavio/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5z10f6l2/obj/arm64-v8a/libgame.so	8405d8e51e4df47e
