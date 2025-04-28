@@ -263,7 +263,7 @@ MonoBehaviour:
   attackName: death touch
   isUnlocked: 1
   unlockLevel: 1
-  damage: 50
+  damage: 75
   knockbackForce: 100
   destroyOnImpact: 0
   destroyDelay: 0.1

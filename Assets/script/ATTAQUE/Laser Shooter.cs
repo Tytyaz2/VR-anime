@@ -47,7 +47,7 @@ public class LaserShooter : MonoBehaviour
                     audioSource.volume = 0.025f;  // Réduire le volume de 5 fois
 
                     // Démarrer l'audio, mais à partir de la position 0.5 seconde du clip
-
+                    audioSource.time = 1f;
                     audioSource.Play();
                 }
                 // Destroye le laser après 1 seconde

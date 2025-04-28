@@ -104,9 +104,6 @@ PrefabInstance:
       addedObject: {fileID: -7371037733757064724}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9183b0b94c73cf14796fa9fc6d6b004b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5580879773331407460}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9183b0b94c73cf14796fa9fc6d6b004b, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4585734165756060936}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9183b0b94c73cf14796fa9fc6d6b004b, type: 3}
       insertIndex: -1
@@ -179,29 +176,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592163375507793224}
   m_Mesh: {fileID: 8777139954052135742, guid: 45b76deb95f938e42855a785450b6c66, type: 3}
---- !u!136 &5580879773331407460
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592163375507793224}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5670457
-  m_Height: 1.971611
-  m_Direction: 1
-  m_Center: {x: 0.057687044, y: 0.90507746, z: -0.6066637}
 --- !u!54 &4585734165756060936
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -283,8 +257,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 05c6714d9901465459e709612bbd0618, type: 3}
+  m_Resource: {fileID: 8300000, guid: 05c6714d9901465459e709612bbd0618, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -379,7 +353,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 592163375507793224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0fb12f140076df44a9cf2f0e7494f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6080ab1db7eeb3647b5c06619b2da938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
