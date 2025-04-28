@@ -174,6 +174,26 @@ public class EnemyHealth : MonoBehaviour
             gameObject.SetActive(false);
     }
 
+    void HitPlayer()
+    {
+        isDead = true;
+
+        if (physicsCollider != null) physicsCollider.enabled = false;
+        if (hurtbox != null) hurtbox.enabled = false;
+
+        if (deathEffectPrefab != null)
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+
+
+        if (healthBar != null)
+            Destroy(healthBar.gameObject);
+
+        if (destroyOnDeath)
+            Destroy(gameObject, deathDelay);
+        else
+            gameObject.SetActive(false);
+    }
+
     void PlayDeathSound()
     {
         if (deathSound != null)
@@ -211,7 +231,7 @@ public class EnemyHealth : MonoBehaviour
          // 👇 Fait disparaître l'ennemi directement après contact
              if (!isDead)
             {
-               Die();
+               HitPlayer();
             }
         }
     }

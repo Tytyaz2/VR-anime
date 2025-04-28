@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBackgroundMusic()
     {
-        PlayMusic(backgroundMusicClip, 0.3f);
+        PlayMusic(backgroundMusicClip, 0.03f);
     }
 
     public void PlayAlarmMusic()

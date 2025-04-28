@@ -18,6 +18,10 @@ public class EnemyMovement : MonoBehaviour
     public float maxDistance = 30f; // Distance à laquelle le son n'est plus audible
     [Range(0.1f, 0.5f)] public float pitchVariation = 0.2f;
 
+    [Header("Footstep Volume")]
+    [Range(0f, 2f)] public float footstepVolume = 1.5f;
+
+
     private Transform player;
     private Rigidbody rb;
     private AudioSource audioSource;
@@ -87,6 +91,6 @@ public class EnemyMovement : MonoBehaviour
     {
         AudioClip clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
         audioSource.pitch = Random.Range(1f - pitchVariation, 1f + pitchVariation);
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, 1.5f);
     }
 }
