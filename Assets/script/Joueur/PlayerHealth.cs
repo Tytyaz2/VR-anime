@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -17,12 +19,14 @@ public class PlayerHealth : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        SoundManager.Instance.PlayBackgroundMusic();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (damageSound != null) audioSource.PlayOneShot(damageSound);
+        if (damageSound != null) audioSource.PlayOneShot(damageSound, 0.1f); // Volume entre 0.0 et 1.0
 
         Debug.Log("Player Health: " + currentHealth);
 
@@ -33,9 +37,17 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
         Debug.Log("Player is dead!");
         // Gère la mort du joueur (Game Over, respawn, etc.)
+         StartCoroutine(WaitAndReturnToMenu());
+         return null;
     }
+
+    private IEnumerator WaitAndReturnToMenu()
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene("Main"); // 🔁 Remplace "MainMenu" par le nom exact de ta scène de menu
+        }
 }

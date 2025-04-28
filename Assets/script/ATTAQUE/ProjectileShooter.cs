@@ -26,18 +26,24 @@ public class ProjectileShooter : MonoBehaviour
         {
             Vector3 shootDirection = Vector3.Lerp(palmPose.forward, -palmPose.up, 0.5f);
             GameObject projectile = Instantiate(projectilePrefab, palmPose.position, palmPose.rotation);
+            // Récupère le AttackData du prefab instancié
+            AttackData attackData = projectile.GetComponent<AttackData>();
 
-            // Ajouter un AudioSource et jouer le son de tir
-            AudioSource audioSource = projectile.AddComponent<AudioSource>();
-            if (shootingSound != null)
+            // Ne joue le son que si l'attaque est débloquée
+            if (attackData != null && attackData.isUnlocked)
             {
-                audioSource.clip = shootingSound;
-                audioSource.loop = false; // Le son ne doit pas boucler
-                audioSource.volume = 0.2f;  // Réduire le volume de 5 fois
+                // Ajouter un AudioSource et jouer le son de tir
+                AudioSource audioSource = projectile.AddComponent<AudioSource>();
+                if (shootingSound != null)
+                {
+                    audioSource.clip = shootingSound;
+                    audioSource.loop = false; // Le son ne doit pas boucler
+                    audioSource.volume = 0.018f;  // Réduire le volume de 5 fois
 
-                // Démarrer l'audio, mais à partir de la position 0.5 seconde du clip
-                audioSource.time = 0.5f;
-                audioSource.Play();
+                    // Démarrer l'audio, mais à partir de la position 0.5 seconde du clip
+                    audioSource.time = 0.5f;
+                    audioSource.Play();
+                }
             }
 
             // Ajout de la physique pour la course du projectile

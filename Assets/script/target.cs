@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Vérifier si l'objet entrant est un projectile
-        if (other.CompareTag("Projectile"))
+        if (other.CompareTag("Projectile") || other.CompareTag("Laser"))
         {
             //spawner.AddScore(10); // Ajoute 10 points au score
             Destroy(gameObject);  // Détruit la cible

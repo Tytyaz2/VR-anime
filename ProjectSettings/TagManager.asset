@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Anchor
   - SpawnPoint
+  - Boss
   layers:
   - Default
   - TransparentFX

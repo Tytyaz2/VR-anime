@@ -1,16 +1,31 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class TargetSpawner : MonoBehaviour
 {
+    public GameObject startGameButton;
+
+    public TextMeshProUGUI messageText; // Texte pour les messages d’attente
+    public string[] pauseMessages; // 3 messages différents
+    private int targetsDestroyedCount = 0;
+    private bool isFirstSpawn = true;
+
+    public VideoPlayer videoPlayer;         // Le composant VideoPlayer
+    public VideoClip[] pauseVideos;
+    public GameObject nextSceneButton;
+
+
     public GameObject targetPrefab;  // Prefab de la cible
     public Transform player;         // Référence au joueur
-    public float minDistance = 3f;   // Distance minimale de spawn
-    public float maxDistance = 5f;   // Distance maximale de spawn
-    public float minHeight = 1f;     // Hauteur minimale
-    public float maxHeight = 3f;     // Hauteur maximale
+    public float minDistance = 7f;   // Distance minimale de spawn
+    public float maxDistance = 10f;   // Distance maximale de spawn
+    public float minHeight = 2f;     // Hauteur minimale
+    public float maxHeight = 5f;     // Hauteur maximale
     public TextMeshProUGUI scoreText; // Référence au texte du score
+    private bool isPaused = false;
 
     private GameObject currentTarget = null; // Stocke la cible actuelle
     private int score = 0; // Score du joueur
@@ -21,24 +36,47 @@ public class TargetSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnTargetWhenDestroyed());
+        // Affiche le bouton de démarrage si assigné
+        if (startGameButton != null)
+            startGameButton.SetActive(true);
     }
+
+    public void StartGame()
+    {
+        if (startGameButton != null)
+            startGameButton.SetActive(false); // Cache le bouton
+
+        StartCoroutine(SpawnTargetWhenDestroyed()); // Lance le jeu
+    }
+
 
     IEnumerator SpawnTargetWhenDestroyed()
     {
+        if (isFirstSpawn)
+        {
+            yield return ShowPauseMessage(0);
+            isFirstSpawn = false;
+        }
+
         while (true)
         {
-            // Attendre tant qu'une cible est encore présente
-            while (currentTarget != null)
+            // Attendre que la cible soit détruite ET qu'on ne soit pas en pause
+            while (currentTarget != null || isPaused)
             {
                 yield return null;
             }
 
-            // Spawn une nouvelle cible
+            targetsDestroyedCount++;
+
+            if (targetsDestroyedCount % 5 == 0)
+            {
+                int msgIndex = Mathf.Clamp((targetsDestroyedCount / 5), 0, pauseMessages.Length - 1);
+                yield return ShowPauseMessage(msgIndex);
+            }
+
             SpawnTarget();
 
-            // Attendre un petit délai pour éviter le spawn instantané
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
         }
     }
 
@@ -93,4 +131,51 @@ public class TargetSpawner : MonoBehaviour
         score += amount;
         scoreText.text = "Score: " + score;  // Met à jour l'affichage du score
     }
+
+    IEnumerator ShowPauseMessage(int messageIndex)
+    {
+        isPaused = true; // <<<<< PAUSE
+
+        if (messageText != null && pauseMessages.Length > messageIndex)
+        {
+            messageText.text = pauseMessages[messageIndex];
+            messageText.gameObject.SetActive(true);
+        }
+
+        if (videoPlayer != null && pauseVideos.Length > messageIndex)
+        {
+            videoPlayer.clip = pauseVideos[messageIndex];
+            videoPlayer.gameObject.SetActive(true);
+            videoPlayer.Play();
+        }
+
+        if (messageIndex == pauseMessages.Length - 1 && nextSceneButton != null)
+        {
+            nextSceneButton.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(15f);
+
+        // On cache les éléments après la pause
+        if (messageText != null)
+            messageText.gameObject.SetActive(false);
+
+        if (videoPlayer != null)
+        {
+            videoPlayer.Stop();
+            videoPlayer.gameObject.SetActive(false);
+        }
+
+        isPaused = false; // <<<<< REPRISE
+    }
+
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene("wave"); // Remplace par le nom exact de ta prochaine scène
+    }
+
+
 }
+
+
